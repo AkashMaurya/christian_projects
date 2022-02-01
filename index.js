@@ -24,24 +24,60 @@
 
 
 $(document).ready(function () {
-   
+
     // $.getJSON('bible.json', function (data){
     //     console.log(data);
 
     // })
+
+    let book = $("#book");
+    let chapter = $("#chapter");
+    let verse = $("#verse");
 
     $.ajax({
         url: 'bible.json',
         type: 'GET',
         DataType: 'json',
         cache: true,
-        success: function (data){
+        success: function (data) {
             // console.log(data);
+
+
+            // for Books
             $(data.verses).each(function (index, value) {
                 // console.log(value.text);
-                $("#book").append(value.book_name);      
+                let newOption = $('<option>');
+                newOption.attr('value', index).text(value.book_name);
+                $('#book').append(newOption);
+            });
+
+
+
+
+
+            // for chapters
+            $(data.verses).each(function (index, value) {
+                // console.log(value.text);
+                let newOption = $('<option>');
+                newOption.attr('value', index).text(value.chapter);
+                $('#chapter').append(newOption);
+            });
+
+            // for verse
+            $(data.verses).each(function (index, value) {
+                // console.log(value.text);
+                let newOption = $('<option>');
+                newOption.attr('value', index).text(value.verse);
+                $('#verse').append(newOption);
+            });
+
+            // for text
+            $(data.verses).each(function (index, value) {
+                // console.log(value.text);
+                // let newOption = $('<p>');
+                // newOption.attr('value', index).text(value.text);
+                $('#bible_text').append(value.verse + " " + value.text + "<br>" );
             });
         }
     })
-    
 });
