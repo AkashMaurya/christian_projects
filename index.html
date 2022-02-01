@@ -8,7 +8,7 @@
     <meta name="Description" content="Enter your description here" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+
     <title>Christian Projects</title>
 </head>
 
@@ -75,7 +75,7 @@
             <div class="col-md-4">
                 <div class="col-md-4">
                     <select name="" id="book" class="form-control">
-                        <option>select the book</option>
+                        <option></option>
                     </select>
                 </div>
             </div>
@@ -112,23 +112,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+    <script src="./index.js"></script>
 
-    <!-- Script to get JSON file and display its content -->
-    <script type="text/javascript" language="javascript">
-        $(document).ready(function() {
-            $("#fetch").click(function(event) {
-                $.getJSON('bible.json', function(emp) {
-                    $('#book').html('<option> Name: ' + emp.book_name + '</option>');
-                    $('#display').append('<p>Age : ' + emp.age + '</p>');
-                    $('#display').append('<p> Role: ' + emp.role + '</p>');
-                    $('#display').append('<p> Company: '
-                    + emp.company 
-                    + '</p>');
-                console.log('Json Recieved');
-                });
-            });
-        });
-        </script>
+
 
 
 </body>
