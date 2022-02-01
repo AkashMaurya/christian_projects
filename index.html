@@ -14,57 +14,94 @@
 
 <body>
     <div class="container-fluid">
+        <!-- head title -->
         <div class="row bg-light">
             <div class="col-md-12 text-center  p-2 text-lg form-control-lg" style="font-family: 'Franklin,  ">
-                <i class="fas fa-bible"></i> Read the Gospel And God Will Speak To You
+                <i class="fas fa-bible"></i> Read the Bible And God Will Speak To You
             </div>
         </div>
-        <div class="row">
-            <nav class="navbar navbar-light bg-light shadow-lg ">
 
-                <a class="navbar-brand">ChristianProjects</a>
+        <!-- navbar -->
+        <nav class="navbar navbar-light bg-light shadow-lg ">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Blog</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Category
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Gallary</a></li>
-                                <li><a class="dropdown-item" href="#">Gospel</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">About us</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Upcoming Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact us</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+            <a class="navbar-brand">ChristianProjects</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Gallary</a></li>
+                            <li><a class="dropdown-item" href="#">Gospel</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">About us</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Upcoming Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact us</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+
+        </nav>
+
+
+        <p class="display-4 text-center">Read the HOLY Bible</p>
+        <div class="row mt-2">
+            <!-- book -->
+            <div class="col-md-4">
+                <div class="col-md-4">
+                    <select name="" id="book" class="form-control">
+                        <option>select the book</option>
+                    </select>
                 </div>
-
-            </nav>
+            </div>
+            <br>
+            <br>
+            <!-- chapter -->
+            <div class="col-md-4">
+                <select name="" id="chapter" class="form-control">
+                    <option>select the chapter</option>
+                </select>
+            </div>
+            <br>
+            <br>
+            <!-- verse -->
+            <div class="col-md-4">
+                <select name="" id="verse" class="form-control">
+                    <option>select the verse</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <p id="bible">bible</p>
+            </div>
         </div>
     </div>
 
@@ -72,10 +109,28 @@
 
     <!-- navbar end -->
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+
+    <!-- Script to get JSON file and display its content -->
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+            $("#fetch").click(function(event) {
+                $.getJSON('bible.json', function(emp) {
+                    $('#book').html('<option> Name: ' + emp.book_name + '</option>');
+                    $('#display').append('<p>Age : ' + emp.age + '</p>');
+                    $('#display').append('<p> Role: ' + emp.role + '</p>');
+                    $('#display').append('<p> Company: '
+                    + emp.company 
+                    + '</p>');
+                console.log('Json Recieved');
+                });
+            });
+        });
+        </script>
+
+
 </body>
 
 </html>
-
